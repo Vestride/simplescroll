@@ -14,18 +14,18 @@
             font-family: Menlo;
         }
 
-        header {
+        .header {
             height: 200px;
             background: #bada55;
         }
 
-        section {
+        .section {
             position: relative;
             height: 1000px;
             background: #fafafa;
         }
 
-        footer {
+        .footer {
             background: #ccc;
             height: 100px;
         }
@@ -45,7 +45,7 @@
 </head>
 <body>
     <a id="top" href="#"></a>
-    <header>
+    <div class="header">
         <code>&lt;header&gt;</code>
         <br>
         <button id="to-footer">Go to footer</button>
@@ -54,22 +54,22 @@
         <button id="offset-">Section with -100px offset</button>
         <br>
         <button id="to-my-id">Scroll with Hash</button>
-    </header>
-    <section>
+    </div>
+    <div class="section">
         <code>&lt;section&gt;</code>
         <br>
         <button class="top">Top</button>
         <div class="one-hunid">I'm 100px from <code>&lt;section&gt;</code></div>
-    </section>
+    </div>
     <div id="my-id">
         <code>&lt;div id="my-id"&gt;</code>
         <div><button id="top-with-hash">Top with hash</button></div>
     </div>
-    <footer>
+    <div class="footer">
         <code>&lt;footer&gt;</code>
         <br>
         <button class="top">Top</button>
-    </footer>
+    </div>
 
     <!-- Get jQuery -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -85,7 +85,7 @@
             $('#to-footer').on('click', function() {
 
                 $.simplescroll({
-                    target: $('footer')
+                    target: $('.footer')
                 });
 
             });
@@ -93,7 +93,7 @@
             $('#callback').on('click', function() {
 
                 $.simplescroll({
-                    target: $('section'),
+                    target: $('.section'),
                     speed: 400,
                     callback: function() {
                         alert('done scrolling')
@@ -108,14 +108,14 @@
 
             $('#offset-plus').on('click', function() {
                 $.simplescroll({
-                    target: 'section',
+                    target: '.section',
                     offset: 100
                 });
             });
 
             $('#offset-').on('click', function() {
                 $.simplescroll({
-                    target: 'section',
+                    target: '.section',
                     offset: -100
                 });
             });
