@@ -54,6 +54,13 @@
         <button id="offset-">Section with -100px offset</button>
         <br>
         <button id="to-my-id">Scroll with Hash</button>
+        <div class="nav-links">
+            inside the <code>.nav-links</code> div. The links below use <code>$('.nav-links a').simplescroll()</code>
+            <br>
+            <a href="#the-footer">&lt;a&gt; to footer</a>
+            <br>
+            <a href="#my-id">to <code>#my-id</code></a>
+        </div>
     </div>
     <div class="section">
         <code>&lt;section&gt;</code>
@@ -65,7 +72,7 @@
         <code>&lt;div id="my-id"&gt;</code>
         <div><button id="top-with-hash">Top with hash</button></div>
     </div>
-    <div class="footer">
+    <div class="footer" id="the-footer">
         <code>&lt;footer&gt;</code>
         <br>
         <button class="top">Top</button>
@@ -133,6 +140,8 @@
                     showHash: true
                 });
             });
+
+            $('.nav-links a').simplescroll();
         }
 
         $(document).ready( addEvents );

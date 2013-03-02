@@ -2,8 +2,8 @@
  *
  * Smooth Scrolling plugin
  * @author Glen Cheney
- * @date 01.16.13
- * @version 1.0
+ * @date 03.02.13
+ * @version 1.2
  */
 ;(function($, window, undefined) {
   'use strict';
@@ -20,7 +20,8 @@
 
     _init : function( fn ) {
       var self = this,
-          $target = self.target.jquery ? self.target : $(self.target),
+          selector = self.target.jquery ? '' : self.target.replace(/.*(?=#[^\s]*$)/, ''), // strip for ie7
+          $target = self.target.jquery ? self.target : $(selector),
           targetOffset = $target.length ? $target.offset().top - self.offset : 0,
           totalHeight = $(document).height(),
           screenHeight = $(window).height();
@@ -30,14 +31,14 @@
         return;
       }
 
-      if (typeof fn === 'function') {
+      if ( typeof fn === 'function' ) {
         self.callback = fn;
       }
 
       // Make sure we have room to scroll - basically choose an offset that we'll scroll to and have the entire window.
       // This keeps timing correct.
       // If amount below the target offset's is less than our screen height
-      if (totalHeight - targetOffset < screenHeight) {
+      if ( totalHeight - targetOffset < screenHeight ) {
         targetOffset -= screenHeight - (totalHeight - targetOffset);
       }
 
@@ -53,9 +54,9 @@
       // Scroll!
       $('html,body').animate({
         scrollTop: offset
-      }, speed, easing, function(evt) {
-        if (!called) {
-          complete.call(this, evt);
+      }, speed, easing, function( evt ) {
+        if ( !called ) {
+          complete.call( this, evt );
         }
         called = true;
       });
@@ -93,14 +94,29 @@
   // If we load the page with a hash, scroll to it
   $.simplescroll.initial = function( options, fn ) {
     if ( window.location.hash ) {
-      options = $.extend(options, {target: window.location.hash});
+      options = $.extend( options, {target: window.location.hash} );
       $.simplescroll( options, fn );
     }
   };
 
+  // Convenience method which attaches a click event to the collection which scrolls to the
+  // defined target (via a function) or the href attribute
+  $.fn.simplescroll = function( options, fn ) {
+    return this.each(function() {
+      $(this).on('click', function( evt ) {
+        evt.preventDefault();
+        options = options || {};
+        options.target = $.isFunction( options.target ) ?
+          options.target.call( this ) :
+          this.getAttribute('href');
+        $.simplescroll( options, fn );
+      });
+    });
+  };
+
   $.simplescroll.options = {
     target: 'body',
-    speed: 600,
+    speed: 400,
     easing: $.easing.easeOutQuad ? 'easeOutQuad' : 'swing',
     showHash: false,
     callback: $.noop,
