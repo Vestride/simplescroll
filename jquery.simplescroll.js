@@ -2,7 +2,7 @@
  *
  * Smooth Scrolling plugin
  * @author Glen Cheney
- * @date 03.02.13
+ * @date 03.15.13
  * @version 1.2
  */
 ;(function($, window, undefined) {
@@ -12,7 +12,7 @@
     var self = this;
 
     $.extend( self, $.simplescroll.options, options );
-
+    self.$window = $(window);
     self._init( fn );
   };
 
@@ -24,7 +24,7 @@
           $target = self.target.jquery ? self.target : $(selector),
           targetOffset = $target.length ? $target.offset().top - self.offset : 0,
           totalHeight = $(document).height(),
-          screenHeight = $(window).height();
+          screenHeight = self.$window.height();
 
       // Unable to find target
       if ( !$target.length ) {
@@ -63,25 +63,32 @@
     },
 
     _showHash : function( hash, $target ) {
-      var $fake;
+      var self = this,
+          fake;
 
       hash = hash.replace(/^#/, '');
 
       if ( $target.length ) {
         $target.attr( 'id', '' );
-        $fake = $( '<div/>' ).css({
+        fake = $( '<div/>' ).css({
           position: 'absolute',
           visibility: 'hidden',
-          top: $(window).scrollTop() + 'px'
+          top: self.$window.scrollTop() + 'px'
         })
         .attr( 'id', hash )
-        .appendTo( document.body );
+        // Get the DOM node from jQuery
+        [0];
+
+        // Use native append over jQuery (http://jsperf.com/native-appendchild-vs-jquery-append/4)
+        document.body.appendChild( fake );
       }
 
+      // Change the hash
       window.location.hash = hash;
 
+      // Remove the fake element and put the id back on the real one
       if ( $target.length ) {
-        $fake.remove();
+        document.body.removeChild( fake );
         $target.attr( 'id', hash );
       }
     }
