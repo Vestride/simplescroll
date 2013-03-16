@@ -1,6 +1,5 @@
 /*!
- *
- * Smooth Scrolling plugin
+ * Smooth Scrolling plugin (https://github.com/Vestride/simplescroll)
  * @author Glen Cheney
  * @date 03.15.13
  * @version 1.2
@@ -111,7 +110,7 @@
   // defined target (via a function) or the href attribute
   $.fn.simplescroll = function( options, fn ) {
     return this.each(function() {
-      $(this).on('click', function( evt ) {
+      $(this).on('click.simplescroll', function( evt ) {
         evt.preventDefault();
         options = options || {};
         options.target = $.isFunction( options.target ) ?
