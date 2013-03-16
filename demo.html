@@ -11,7 +11,7 @@
         }
 
         code {
-            font-family: Menlo;
+            font-family: Menlo, monospace;
         }
 
         .header {
@@ -54,6 +54,9 @@
         <button id="offset-">Section with -100px offset</button>
         <br>
         <button id="to-my-id">Scroll with Hash</button>
+        <button id="function" data-target="#the-footer">Use a function for the target</button>
+        <br>
+        <br>
         <div class="nav-links">
             inside the <code>.nav-links</code> div. The links below use <code>$('.nav-links a').simplescroll()</code>
             <br>
@@ -141,10 +144,26 @@
                 });
             });
 
+            // Target can be a function too!
+            $('#function').on('click', function() {
+                var btn = this;
+                $.simplescroll({
+                    target: function() {
+                        return $(btn).data('target');
+                    }
+                });
+            });
+
             $('.nav-links a').simplescroll();
         }
 
-        $(document).ready( addEvents );
+        $(document).ready( function() {
+            // Add all our click events
+            addEvents();
+
+            // If the page loaded with a hash, scroll to it
+            $.simplescroll.initial();
+        });
     </script>
 </body>
 </html>

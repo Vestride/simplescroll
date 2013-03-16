@@ -20,8 +20,9 @@
 
     _init : function( fn ) {
       var self = this,
-          selector = self.target.jquery ? '' : self.target.replace(/.*(?=#[^\s]*$)/, ''), // strip for ie7
-          $target = self.target.jquery ? self.target : $(selector),
+          target = $.isFunction( self.target ) ? self.target() : self.target,
+          selector = target.jquery ? '' : target.replace(/.*(?=#[^\s]*$)/, ''), // strip for ie7
+          $target = target.jquery ? target : $(selector),
           targetOffset = $target.length ? $target.offset().top - self.offset : 0,
           totalHeight = $(document).height(),
           screenHeight = self.$window.height();
@@ -43,7 +44,7 @@
       }
 
       if ( self.showHash ) {
-        self._showHash( self.target, $target );
+        self._showHash( target, $target );
       }
 
       self._animate(targetOffset, self.speed, self.easing, self.callback);
@@ -122,12 +123,12 @@
   };
 
   $.simplescroll.options = {
-    target: 'body',
-    speed: 400,
-    easing: $.easing.easeOutQuad ? 'easeOutQuad' : 'swing',
-    showHash: false,
-    callback: $.noop,
-    offset: 0
+    target: 'body', // can be a selector or jQuery object or a function that returns one of those
+    speed: 400, // duration of the animation
+    easing: $.easing.easeOutQuad ? 'easeOutQuad' : 'swing', // easing function to use. Defaults to easeOutQuad if it's available
+    showHash: false, // if showHash is true, and your target has an ID, this will add that id to the browser's hash
+    callback: $.noop, // called after the animation is finished. Default is an empty function
+    offset: 0 // distance from the target to scroll to. Positive numbers will result in the window being above your target, negative and it will be below
   };
 
 }(jQuery, window));
