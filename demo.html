@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SimpleScroll Demo</title>
+    <title>jQuery SimpleScroll Demo by @Vestride</title>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro">
     <style>
         body,
@@ -11,49 +11,91 @@
         }
 
         code {
+            font-size: .8em;
             font-family: Menlo, monospace;
         }
 
+        button code {
+            font-size: 1em;
+        }
+
+        a {
+            color: #3399DD;
+            text-decoration: none;
+            transition: .15s;
+        }
+
+        a:hover {
+            color: #3363DD;
+        }
+
+        .title,
+        .subtitle {
+            margin: 0;
+        }
+
+        .demo-section {
+            padding: 1em 0 2em 1em;
+            box-sizing: border-box;
+            border-bottom: 1px solid gray;
+        }
+
         .header {
-            height: 200px;
+            min-height: 200px;
             background: #bada55;
         }
 
         .section {
             position: relative;
-            height: 1000px;
+            min-height: 700px;
             background: #fafafa;
         }
 
         .footer {
             background: #ccc;
-            height: 100px;
+            min-height: 100px;
         }
 
         .one-hunid {
             position: absolute;
             top: 100px;
-            left: 0;
+            left: 1em;
         }
 
         #my-id {
-            height: 500px;
+            min-height: 350px;
             background: #3399DD;
+        }
+
+        .support {
+            background: #DC325F;
+        }
+
+        .share-it {
+            padding-bottom: 100px;
         }
 
     </style>
 </head>
 <body>
     <a id="top" href="#"></a>
-    <div class="header">
-        <code>&lt;header&gt;</code>
+    <div class="demo-section">
+        <h1 class="title">Simple Scroll</h1>
+        <h4 class="subtitle">A jQuery plugin for easy window scrolling by <a href="http://twitter.com/Vestride" target="_blank">@Vestride</a></h4>
+    </div>
+    <div class="demo-section header">
+        <code>&lt;div class="header"&gt;</code>
+        <br>
         <br>
         <button id="to-footer">Go to footer</button>
-        <button id="callback">Go to section with callback</button>
-        <button id="offset-plus">Section with 100px offset</button>
-        <button id="offset-">Section with -100px offset</button>
         <br>
-        <button id="to-my-id">Scroll with Hash</button>
+        <br>
+        <button id="callback">Go to <code>.section</code> with callback</button>
+        <button id="offset-plus">Go to <code>.section</code> with 100px offset</button>
+        <button id="offset-">Go to <code>.section</code> with -100px offset</button>
+        <br>
+        <br>
+        <button id="to-my-id">Scroll to <code>#my-id</code> with Hash</button>
         <button id="function" data-target="#the-footer">Use a function for the target</button>
         <br>
         <br>
@@ -65,20 +107,39 @@
             <a href="#my-id">to <code>#my-id</code></a>
         </div>
     </div>
-    <div class="section">
-        <code>&lt;section&gt;</code>
+    <div class="demo-section section">
+        <code>&lt;div class="section"&gt;</code>
         <br>
         <button class="top">Top</button>
-        <div class="one-hunid">I'm 100px from <code>&lt;section&gt;</code></div>
+        <div class="one-hunid">I'm 100px from <code>.section</code></div>
     </div>
-    <div id="my-id">
+    <div class="demo-section" id="my-id">
         <code>&lt;div id="my-id"&gt;</code>
         <div><button id="top-with-hash">Top with hash</button></div>
     </div>
-    <div class="footer" id="the-footer">
-        <code>&lt;footer&gt;</code>
+    <div class="demo-section footer" id="the-footer">
+        <code>&lt;div id="the-footer"&gt;</code>
         <br>
+        <h2>The Footer</h2>
         <button class="top">Top</button>
+    </div>
+    <div class="demo-section support">
+        <h2>Browser Support</h2>
+        <ul>
+            <li>IE7+</li>
+            <li>Chrome</li>
+            <li>Safari</li>
+            <li>Firefox</li>
+            <li>iOS</li>
+            <li>Android</li>
+        </ul>
+    </div>
+    <div class="demo-section share-it">
+        <h2>Share it!</h2>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="Vestride" data-count="none">Tweet</a>
+
+        <h2>Or check out the readme for the documentation</h2>
+        <a href="https://github.com/Vestride/simplescroll">on GitHub</a>
     </div>
 
     <!-- Get jQuery -->
@@ -89,80 +150,14 @@
 
     <!-- Include the plugin -->
     <script src="jquery.simplescroll.js"></script>
+
+    <!-- Some setup code -->
+    <script src="demo.js"></script>
+
     <script>
-
-        function addEvents() {
-            $('#to-footer').on('click', function() {
-
-                $.simplescroll({
-                    target: $('.footer')
-                });
-
-            });
-
-            $('#callback').on('click', function() {
-
-                $.simplescroll({
-                    target: $('.section'),
-                    speed: 400,
-                    callback: function() {
-                        alert('done scrolling')
-                    }
-                });
-
-            });
-
-            $('.top').on('click', function() {
-                $.simplescroll();
-            });
-
-            $('#offset-plus').on('click', function() {
-                $.simplescroll({
-                    target: '.section',
-                    offset: 100
-                });
-            });
-
-            $('#offset-').on('click', function() {
-                $.simplescroll({
-                    target: '.section',
-                    offset: -100
-                });
-            });
-
-            $('#to-my-id').on('click', function() {
-                $.simplescroll({
-                    target: '#my-id',
-                    showHash: true
-                });
-            });
-
-            $('#top-with-hash').on('click', function() {
-                $.simplescroll({
-                    target: '#top',
-                    showHash: true
-                });
-            });
-
-            // Target can be a function too!
-            $('#function').on('click', function() {
-                var btn = this;
-                $.simplescroll({
-                    target: function() {
-                        return $(btn).data('target');
-                    }
-                });
-            });
-
-            $('.nav-links a').simplescroll();
-        }
-
-        $(document).ready( function() {
-            // Add all our click events
-            addEvents();
-
-            // If the page loaded with a hash, scroll to it
-            $.simplescroll.initial();
+        // Init twitter button after page load
+        $(window).on('load', function() {
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
         });
     </script>
 </body>
