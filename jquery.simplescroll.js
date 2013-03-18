@@ -1,8 +1,9 @@
 /*!
  * Smooth Scrolling plugin (https://github.com/Vestride/simplescroll)
- * @author Glen Cheney
  * @date 03.15.13
  * @version 1.2
+ * Copyright (c) 2013 Glen Cheney
+ * Licensed under the MIT license.
  */
 ;(function($, window, undefined) {
   'use strict';
