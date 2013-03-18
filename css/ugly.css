@@ -26,17 +26,40 @@ a:hover {
     color: #3363DD;
 }
 
+.table-center-wrap {
+    display: table;
+}
+
+.hgroup {
+    height: 128px;
+    float: left;
+}
+
+.table-center {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 .title,
 .subtitle {
     margin: 0;
+}
+
+.logo {
+    float: left;
+    margin-left: 4em;
 }
 
 .link-title {
     margin-bottom: 0;
 }
 
+.intro {
+    overflow: hidden;
+}
+
 .demo-section {
-    padding: 1em 0 2em 1em;
+    padding: 1em 1em 2em;
     box-sizing: border-box;
     border-bottom: 1px solid gray;
 }

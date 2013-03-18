@@ -1,5 +1,7 @@
 # SimpleScroll
 
+[Demo](http://vestride.github.com/simplescroll)
+
 Simplescroll is a jQuery plugin for scrolling the browser window.
 
 For example, you want a button with an id of `#to-my-id` to scroll to the `#my-id` div and also show the hash in the url.

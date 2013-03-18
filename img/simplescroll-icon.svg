@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="256px" height="256px" viewBox="0 0 256 256" enable-background="new 0 0 256 256" xml:space="preserve">
+<g>
+	<path fill="#999999" d="M81.25 21c0 0 0-9 8-9h22c8 0 8 9 8 9H81.25z"/>
+	<path fill="#999999" d="M113.25 21c0 0 0-9 8-9h22c8 0 8 9 8 9H113.25z"/>
+	<path fill="#999999" d="M145.25 21c0 0 0-9 8-9h22c8 0 8 9 8 9H145.25z"/>
+	<path d="M0 0v256h256V0H0z M249 249H7V7h242V249z"/>
+	<circle cx="14.8" cy="15.2" r="2.8"/>
+	<circle cx="23.9" cy="15.2" r="2.8"/>
+	<circle cx="33.1" cy="15.2" r="2.8"/>
+	<path d="M49.25 21c0 0 0-9 8-9h22c8 0 8 9 8 9H49.25z"/>
+	<path fill="#999999" d="M177.25 21c0 0 0-9 8-9h22c8 0 8 9 8 9H177.25z"/>
+	<rect x="7" y="21" width="242" height="5"/>
+	<rect x="17" y="42" fill="#E2E2E2" width="83" height="67"/>
+	<rect x="107" y="42" fill="#E2E2E2" width="108" height="5"/>
+	<rect x="107" y="52" fill="#E2E2E2" width="108" height="5"/>
+	<rect x="107" y="62" fill="#E2E2E2" width="108" height="5"/>
+	<rect x="107" y="72" fill="#E2E2E2" width="108" height="5"/>
+	<rect x="107" y="82" fill="#E2E2E2" width="79" height="5"/>
+	<rect x="107" y="94" fill="#E2E2E2" width="14" height="15"/>
+	<rect x="127" y="94" fill="#E2E2E2" width="14" height="15"/>
+	<rect x="55" y="138" fill="#E2E2E2" width="147" height="74"/>
+	<rect x="36" y="143" fill="#E2E2E2" width="15" height="63"/>
+	<rect x="206" y="143" fill="#E2E2E2" width="15" height="63"/>
+	<circle fill="#E2E2E2" cx="128.5" cy="220" r="1.2"/>
+	<circle fill="#E2E2E2" cx="138.5" cy="220" r="1.2"/>
+	<circle fill="#E2E2E2" cx="118.5" cy="220" r="1.2"/>
+	<polygon fill="#E2E2E2" points="17,175 21,172.5 25,170 25,175 25,180 21,177.5"/>
+	<polygon fill="#E2E2E2" points="239,175 235,172.5 231,170 231,175 231,180 235,177.5"/>
+</g>
+<g>
+	<polygon points="172,121 172,82 82,82 82,121 49.2,121 127.2,164.4 206.3,121"/>
+</g>
+</svg>
