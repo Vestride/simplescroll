@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery SimpleScroll Demo by @Vestride</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="jQuery SimpleScroll Plugin" />
+    <meta property="og:description" content="A jQuery plugin for easy window scrolling" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.com/Vestride/simplescroll" />
+    <meta property="og:image" content="https://github.com/Vestride/simplescroll/img/promo.png" />
+    <meta property="og:site_name" content="jQuery SimpleScroll Plugin" />
+    <meta property="fb:admins" content="771347349" />
+    <meta name="author" content="https://plus.google.com/u/0/100210640453700033824" />
+
+    <link href="https://plus.google.com/u/0/100210640453700033824" rel="author" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="css/ugly.css">
+</head>
+<body>
+    <a id="top" href="#"></a>
+    <div class="demo-section">
+        <h1 class="title">Simple Scroll</h1>
+        <h4 class="subtitle">A jQuery plugin for easy window scrolling by <a href="http://twitter.com/Vestride" target="_blank">@Vestride</a></h4>
+    </div>
+    <div class="demo-section header">
+        <code>&lt;div class="header"&gt;</code>
+        <br>
+        <br>
+        <button id="to-footer">Go to footer</button>
+        <br>
+        <br>
+        <button id="callback">Go to <code>.section</code> with callback</button>
+        <button id="offset-plus">Go to <code>.section</code> with 100px offset</button>
+        <button id="offset-">Go to <code>.section</code> with -100px offset</button>
+        <br>
+        <br>
+        <button id="to-my-id">Scroll to <code>#my-id</code> with Hash</button>
+        <button id="function" data-target="#the-footer">Use a function for the target</button>
+        <br>
+        <br>
+        <div class="nav-links">
+            inside the <code>.nav-links</code> div. The links below use <code>$('.nav-links a').simplescroll()</code>
+            <br>
+            <a href="#the-footer">&lt;a&gt; to footer</a>
+            <br>
+            <a href="#my-id">to <code>#my-id</code></a>
+        </div>
+    </div>
+    <div class="demo-section section">
+        <code>&lt;div class="section"&gt;</code>
+        <br>
+        <button class="top">Top</button>
+        <div class="one-hunid">I'm 100px from <code>.section</code></div>
+    </div>
+    <div class="demo-section" id="my-id">
+        <code>&lt;div id="my-id"&gt;</code>
+        <div><button id="top-with-hash">Top with hash</button></div>
+    </div>
+    <div class="demo-section footer" id="the-footer">
+        <code>&lt;div id="the-footer"&gt;</code>
+        <br>
+        <h2>The Footer</h2>
+        <button class="top">Top</button>
+    </div>
+    <div class="demo-section support">
+        <h2>Browser Support</h2>
+        <ul>
+            <li>IE7+</li>
+            <li>Chrome</li>
+            <li>Safari</li>
+            <li>Firefox</li>
+            <li>iOS</li>
+            <li>Android</li>
+        </ul>
+    </div>
+    <div class="demo-section share-it">
+        <h2 class="link-title">Share it!</h2>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="Vestride" data-count="none">Tweet</a>
+
+        <h3 class="link-title">Check out the readme for the documentation</h3>
+        <a href="https://github.com/Vestride/simplescroll">on GitHub</a>
+
+        <h3 class="link-title">Download</h3>
+        <a href="jquery.simplescroll.js">jquery.simplescroll.js</a>
+        <br>
+        <a href="jquery.simplescroll.min.js">jquery.simplescroll.min.js</a>
+    </div>
+
+    <!-- Get jQuery -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <!-- Optional. simplescroll will use easeOutQuad if it's available by default. -->
+    <script src="js/jquery.easing.1.3.js"></script>
+
+    <!-- Include the plugin -->
+    <script src="jquery.simplescroll.js"></script>
+
+    <!-- Some setup code -->
+    <script src="js/demo.js"></script>
+
+    <script>
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-39355642-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function(doc, script) {
+          var js,
+              fjs = doc.getElementsByTagName(script)[0],
+              frag = doc.createDocumentFragment(),
+              add = function(url, id) {
+                  if (doc.getElementById(id)) {return;}
+                  js = doc.createElement(script);
+                  js.src = url;
+                  js.async = true;
+                  id && (js.id = id);
+                  frag.appendChild( js );
+              };
+
+            // Twitter SDK
+            add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+            add(('https:' == doc.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js')
+
+            fjs.parentNode.insertBefore(frag, fjs);
+
+        }(document, 'script'));
+    </script>
+</body>
+</html>
